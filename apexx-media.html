@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>APEX MEDIA GROUP — Defense · Military · Federal Technology</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --ink: #0d0f12;
+  --ink2: #161a20;
+  --paper: #f5f1eb;
+  --paper2: #ede9e1;
+  --red: #c0392b;
+  --red2: #e74c3c;
+  --gold: #b8860b;
+  --gold2: #d4a017;
+  --steel: #2c3e50;
+  --muted: #7f8c8d;
+  --light: #95a5a6;
+  --white: #ffffff;
+  --border: #d5cfc4;
+  --border-dark: rgba(255,255,255,0.1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--paper); color: var(--ink); font-family: 'Source Serif 4', Georgia, serif; overflow-x: hidden; }
+
+/* BREAKING NEWS TICKER */
+.ticker-bar {
+  background: var(--red); color: var(--white);
+  padding: 0.45rem 0; overflow: hidden;
+  display: flex; align-items: center;
+}
+.ticker-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem; letter-spacing: 3px; font-weight: 500;
+  background: var(--ink); color: var(--white);
+  padding: 0.2rem 0.9rem; white-space: nowrap; flex-shrink: 0; margin-right: 1.5rem;
+}
+.ticker-track {
+  display: flex; gap: 4rem;
+  animation: ticker 40s linear infinite;
+  white-space: nowrap;
+}
+.ticker-track span {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem; letter-spacing: 1px;
+}
+.ticker-sep { color: rgba(255,255,255,0.4); }
+@keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* MASTHEAD */
+.masthead {
+  background: var(--ink);
+  padding: 1.4rem 2.5rem;
+  display: flex; align-items: center; justify-content: space-between;
+  border-bottom: 3px solid var(--red);
+}
+.masthead-left { display: flex; flex-direction: column; gap: 0.1rem; }
+.masthead-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem; letter-spacing: 2px; color: var(--light);
+  text-transform: uppercase;
+}
+.logo {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 900; letter-spacing: -1px;
+  color: var(--white); line-height: 1;
+}
+.logo span { color: var(--red); }
+.logo-sub {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.58rem; letter-spacing: 5px; color: var(--light);
+  text-transform: uppercase; margin-top: 0.2rem;
+}
+.masthead-right {
+  display: flex; flex-direction: column; align-items: flex-end; gap: 0.8rem;
+}
+.masthead-actions { display: flex; gap: 0.6rem; }
+.btn-sub {
+  background: var(--red); color: var(--white);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase;
+  padding: 0.5rem 1.2rem; border: none; cursor: pointer;
+  transition: background 0.2s;
+}
+.btn-sub:hover { background: var(--red2); }
+.btn-login {
+  background: transparent; color: var(--light);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase;
+  padding: 0.5rem 1.2rem; border: 1px solid rgba(255,255,255,0.15); cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-login:hover { border-color: var(--white); color: var(--white); }
+
+/* PRIMARY NAV */
+nav.primary {
+  background: var(--ink2);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  padding: 0 2.5rem;
+  display: flex; align-items: center; justify-content: space-between;
+  position: sticky; top: 0; z-index: 100;
+}
+.nav-tabs { display: flex; list-style: none; }
+.nav-tabs li a {
+  display: block; padding: 1rem 1.1rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--light); text-decoration: none;
+  border-bottom: 3px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+.nav-tabs li a:hover, .nav-tabs li a.active { color: var(--white); border-bottom-color: var(--red); }
+.nav-search {
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.search-input {
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+  color: var(--white); padding: 0.4rem 0.8rem;
+  font-family: 'JetBrains Mono', monospace; font-size: 0.68rem;
+  outline: none; width: 180px; transition: border-color 0.2s;
+}
+.search-input:focus { border-color: var(--red); }
+.search-input::placeholder { color: var(--light); }
+.hamburger-nav { display: none; flex-direction: column; gap: 4px; cursor: pointer; padding: 0.8rem 0; }
+.hamburger-nav span { width: 20px; height: 2px; background: var(--light); }
+
+/* LAYOUT */
+.container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
+.page-section { padding: 3rem 0; border-bottom: 1px solid var(--border); }
+
+/* HERO — MAGAZINE GRID */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  grid-template-rows: auto auto;
+  gap: 0;
+  border-bottom: 1px solid var(--border);
+}
+.hero-lead {
+  border-right: 1px solid var(--border);
+  padding: 2.5rem 2.5rem 2.5rem 0;
+}
+.hero-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--red); display: flex; align-items: center; gap: 0.6rem;
+  margin-bottom: 0.8rem;
+}
+.hero-label::before { content: ''; width: 24px; height: 1px; background: var(--red); }
+.hero-headline {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 900; line-height: 1.15; color: var(--ink);
+  margin-bottom: 1rem;
+}
+.hero-deck {
+  font-size: 1.05rem; color: #4a4a4a; line-height: 1.7; font-weight: 300;
+  margin-bottom: 1.5rem; font-style: italic;
+}
+.hero-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem; letter-spacing: 1px; color: var(--muted);
+  display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+}
+.meta-dot { color: var(--red); }
+.hero-img-placeholder {
+  width: 100%; aspect-ratio: 16/9;
+  background: linear-gradient(135deg, var(--steel) 0%, var(--ink) 100%);
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden; margin-bottom: 1.5rem;
+}
+.hero-img-placeholder::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+.img-caption {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem; color: rgba(255,255,255,0.5); letter-spacing: 1px;
+  z-index: 1; text-align: center; padding: 1rem;
+}
+.img-icon { font-size: 3rem; opacity: 0.15; display: block; margin-bottom: 0.5rem; }
+
+.hero-sidebar { padding: 2rem 0 2rem 2rem; display: flex; flex-direction: column; gap: 0; }
+.sidebar-article {
+  padding: 1.2rem 0; border-bottom: 1px solid var(--border);
+  cursor: pointer; transition: opacity 0.2s;
+}
+.sidebar-article:last-child { border-bottom: none; }
+.sidebar-article:hover { opacity: 0.75; }
+.sidebar-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem; font-weight: 900; color: var(--border);
+  line-height: 1; margin-bottom: 0.3rem;
+}
+.sidebar-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.58rem; letter-spacing: 2px; color: var(--red); text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+.sidebar-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem; font-weight: 700; line-height: 1.3; color: var(--ink);
+  margin-bottom: 0.3rem;
+}
+.sidebar-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.58rem; color: var(--muted); letter-spacing: 1px;
+}
+
+/* SECTION HEADERS */
+.section-header {
+  display: flex; align-items: baseline; gap: 1.5rem;
+  border-bottom: 3px solid var(--ink); padding-bottom: 0.6rem; margin-bottom: 2rem;
+}
+.section-title-label {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem; font-weight: 900; color: var(--ink);
+}
+.section-title-sub {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem; letter-spacing: 3px; color: var(--muted); text-transform: uppercase;
+}
+.section-link {
+  margin-left: auto; font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--red); text-decoration: none;
+  border-bottom: 1px solid var(--red); padding-bottom: 1px;
+}
+
+/* ARTICLE CARDS */
+.articles-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+.article-card { cursor: pointer; }
+.article-img {
+  width: 100%; aspect-ratio: 16/10;
+  background: linear-gradient(135deg, #1a252f, #2c3e50);
+  margin-bottom: 0.8rem; position: relative; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+}
+.article-img::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.4), transparent);
+}
+.article-img-icon { font-size: 2rem; opacity: 0.12; }
+.article-category {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.58rem; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--red); margin-bottom: 0.4rem;
+}
+.article-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem; font-weight: 700; line-height: 1.4; color: var(--ink);
+  margin-bottom: 0.5rem;
+  transition: color 0.2s;
+}
+.article-card:hover .article-title { color: var(--red); }
+.article-excerpt {
+  font-size: 0.85rem; color: var(--muted); line-height: 1.6;
+  font-weight: 300; margin-bottom: 0.6rem;
+}
+.article-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.58rem; color: var(--light); letter-spacing: 1px;
+}
+
+/* TWO COL LAYOUT */
+.two-col { display: grid; grid-template-columns: 1fr 300px; gap: 3rem; }
+.main-col {}
+.side-col { border-left: 1px solid var(--border); padding-left: 2rem; }
+
+/* FEATURED LONG READ */
+.long-read {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+  background: var(--ink); color: var(--white);
+  padding: 2.5rem; margin-bottom: 2rem;
+}
+.long-read-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--red); margin-bottom: 0.8rem;
+}
+.long-read-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem; font-weight: 900; line-height: 1.2;
+  color: var(--white); margin-bottom: 1rem;
+}
+.long-read-excerpt {
+  font-size: 0.92rem; color: rgba(255,255,255,0.65); line-height: 1.8;
+  font-weight: 300; font-style: italic;
+}
+.long-read-cta {
+  display: inline-block; margin-top: 1.5rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--white); border-bottom: 1px solid var(--red);
+  padding-bottom: 2px; text-decoration: none; cursor: pointer;
+  transition: color 0.2s;
+}
+.long-read-cta:hover { color: var(--red); }
+.long-read-visual {
+  background: linear-gradient(135deg, var(--steel), #1a252f);
+  display: flex; align-items: center; justify-content: center;
+  min-height: 200px; position: relative; overflow: hidden;
+}
+.long-read-visual::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(45deg, rgba(192,57,43,0.05) 0px, rgba(192,57,43,0.05) 1px, transparent 1px, transparent 20px);
+}
+.visual-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 5rem; font-weight: 900; color: rgba(255,255,255,0.04);
+  position: absolute; letter-spacing: -2px;
+}
+
+/* SIDEBAR WIDGETS */
+.widget { margin-bottom: 2rem; }
+.widget-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem; font-weight: 900;
+  border-bottom: 2px solid var(--ink); padding-bottom: 0.5rem; margin-bottom: 1rem;
+}
+.trending-item {
+  display: flex; gap: 0.8rem; padding: 0.8rem 0;
+  border-bottom: 1px solid var(--border); cursor: pointer;
+  transition: opacity 0.2s;
+}
+.trending-item:hover { opacity: 0.7; }
+.trending-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem; font-weight: 900; color: var(--border);
+  line-height: 1; flex-shrink: 0; width: 28px;
+}
+.trending-title {
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.85rem; line-height: 1.4; color: var(--ink); font-weight: 600;
+}
+
+/* NEWSLETTER */
+.newsletter-widget {
+  background: var(--ink); padding: 1.5rem;
+}
+.newsletter-widget .widget-title { color: var(--white); border-color: var(--red); }
+.newsletter-desc { font-size: 0.82rem; color: rgba(255,255,255,0.6); line-height: 1.6; margin-bottom: 1rem; }
+.newsletter-input {
+  width: 100%; background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15); color: var(--white);
+  padding: 0.6rem 0.8rem; font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem; outline: none; margin-bottom: 0.6rem;
+  transition: border-color 0.2s;
+}
+.newsletter-input:focus { border-color: var(--red); }
+.newsletter-input::placeholder { color: rgba(255,255,255,0.3); }
+.newsletter-btn {
+  width: 100%; background: var(--red); color: var(--white); border: none;
+  padding: 0.7rem; font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase;
+  cursor: pointer; transition: background 0.2s;
+}
+.newsletter-btn:hover { background: var(--red2); }
+
+/* PUBLICATIONS STRIP */
+.pubs-section {
+  background: var(--ink2); padding: 3rem 0; border-bottom: none;
+}
+.pubs-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem; letter-spacing: 4px; text-transform: uppercase;
+  color: var(--muted); text-align: center; margin-bottom: 2rem;
+}
+.pubs-grid {
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px;
+}
+.pub-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 2rem 1.5rem; text-align: center; cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+.pub-card:hover { background: rgba(192,57,43,0.08); border-color: rgba(192,57,43,0.3); }
+.pub-icon { font-size: 1.8rem; margin-bottom: 0.6rem; }
+.pub-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem; font-weight: 700; color: var(--white); margin-bottom: 0.3rem;
+}
+.pub-desc {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.55rem; letter-spacing: 1px; color: var(--muted); text-transform: uppercase;
+}
+
+/* AI ASSISTANT */
+.ai-section { background: var(--paper2); padding: 4rem 0; }
+.ai-header { text-align: center; margin-bottom: 2.5rem; }
+.ai-header-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem; letter-spacing: 4px; text-transform: uppercase;
+  color: var(--red); margin-bottom: 0.5rem;
+}
+.ai-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem; font-weight: 900; color: var(--ink); margin-bottom: 0.5rem;
+}
+.ai-header p { font-size: 0.95rem; color: var(--muted); font-style: italic; }
+
+.ai-chat-box {
+  max-width: 760px; margin: 0 auto;
+  background: var(--white); border: 1px solid var(--border);
+  box-shadow: 0 4px 32px rgba(0,0,0,0.08);
+}
+.ai-chat-header {
+  background: var(--ink); padding: 1rem 1.5rem;
+  display: flex; align-items: center; gap: 0.8rem;
+}
+.ai-dot { width: 8px; height: 8px; border-radius: 50%; }
+.ai-dot.red { background: #ef4444; }
+.ai-dot.yellow { background: #f59e0b; }
+.ai-dot.green { background: #22c55e; }
+.ai-title { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--light); margin-left: 0.5rem; letter-spacing: 1px; }
+.ai-live { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; color: #22c55e; margin-left: auto; display: flex; align-items: center; gap: 0.3rem; }
+.ai-live-dot { width: 6px; height: 6px; background: #22c55e; border-radius: 50%; animation: blink 1.5s infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
+
+#ai-messages {
+  height: 380px; overflow-y: auto; padding: 1.5rem;
+  display: flex; flex-direction: column; gap: 1rem;
+  scrollbar-width: thin; scrollbar-color: var(--border) transparent;
+}
+.ai-msg { display: flex; gap: 0.8rem; max-width: 85%; }
+.ai-msg.user { align-self: flex-end; flex-direction: row-reverse; }
+.ai-bubble {
+  padding: 0.8rem 1.1rem; font-size: 0.88rem; line-height: 1.65;
+  border-radius: 0;
+}
+.ai-msg.bot .ai-bubble {
+  background: var(--paper2); color: var(--ink);
+  border: 1px solid var(--border);
+  font-family: 'Source Serif 4', serif;
+}
+.ai-msg.user .ai-bubble {
+  background: var(--red); color: var(--white);
+  font-family: 'JetBrains Mono', monospace; font-size: 0.8rem;
+}
+.ai-avatar {
+  width: 30px; height: 30px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Playfair Display', serif; font-weight: 900; font-size: 0.75rem;
+}
+.ai-msg.bot .ai-avatar { background: var(--ink); color: var(--white); }
+.ai-msg.user .ai-avatar { background: var(--paper2); color: var(--red); border: 1px solid var(--border); }
+
+.ai-quickbtns {
+  padding: 0 1.5rem 0.8rem;
+  display: flex; flex-wrap: wrap; gap: 0.4rem;
+  border-top: 1px solid var(--border);
+  padding-top: 0.8rem;
+}
+.ai-quick {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem; letter-spacing: 1px; text-transform: uppercase;
+  background: transparent; border: 1px solid var(--border);
+  color: var(--muted); padding: 0.3rem 0.7rem; cursor: pointer;
+  transition: all 0.2s;
+}
+.ai-quick:hover { border-color: var(--red); color: var(--red); }
+
+.ai-input-row {
+  display: flex; border-top: 2px solid var(--ink); padding: 0.8rem 1rem; gap: 0.6rem;
+}
+#ai-input {
+  flex: 1; border: 1px solid var(--border); padding: 0.6rem 0.9rem;
+  font-family: 'Source Serif 4', serif; font-size: 0.88rem; outline: none;
+  background: var(--paper); transition: border-color 0.2s;
+}
+#ai-input:focus { border-color: var(--red); }
+#ai-input::placeholder { color: var(--muted); font-style: italic; }
+#ai-send {
+  background: var(--red); color: var(--white); border: none;
+  padding: 0.6rem 1.2rem; cursor: pointer;
+  font-family: 'JetBrains Mono', monospace; font-size: 0.65rem;
+  letter-spacing: 2px; text-transform: uppercase; font-weight: 500;
+  transition: background 0.2s;
+}
+#ai-send:hover { background: var(--red2); }
+#ai-send:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.ai-typing { display: flex; gap: 4px; align-items: center; }
+.ai-typing span { width: 6px; height: 6px; background: var(--muted); border-radius: 50%; animation: bounce 1.2s infinite; }
+.ai-typing span:nth-child(2) { animation-delay: 0.2s; }
+.ai-typing span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes bounce { 0%,80%,100%{transform:translateY(0)} 40%{transform:translateY(-5px)} }
+
+/* OPINION / ANALYSIS */
+.opinion-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+.opinion-card {
+  border-left: 3px solid var(--red); padding-left: 1.2rem;
+  cursor: pointer; transition: opacity 0.2s;
+}
+.opinion-card:hover { opacity: 0.75; }
+.opinion-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.58rem; letter-spacing: 2px; color: var(--red);
+  text-transform: uppercase; margin-bottom: 0.4rem;
+}
+.opinion-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem; font-weight: 700; line-height: 1.35; color: var(--ink);
+  margin-bottom: 0.4rem;
+}
+.opinion-author {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem; color: var(--muted); letter-spacing: 1px;
+}
+
+/* EVENTS */
+.events-strip { background: var(--ink); padding: 3rem 0; }
+.events-header { display: flex; align-items: baseline; gap: 1.5rem; margin-bottom: 2rem; }
+.events-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem; font-weight: 900; color: var(--white);
+}
+.events-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; }
+.event-card {
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+  padding: 1.5rem; cursor: pointer; transition: background 0.2s;
+}
+.event-card:hover { background: rgba(192,57,43,0.1); }
+.event-date {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem; font-weight: 900; color: var(--red); line-height: 1; margin-bottom: 0.2rem;
+}
+.event-month {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); margin-bottom: 0.8rem;
+}
+.event-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem; font-weight: 700; color: var(--white); margin-bottom: 0.4rem;
+}
+.event-loc {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem; color: var(--muted); letter-spacing: 1px;
+}
+
+/* ADVERTISE STRIP */
+.advertise-strip {
+  border: 2px solid var(--ink); padding: 0.6rem 1.5rem;
+  display: flex; align-items: center; justify-content: center; gap: 2rem;
+  margin: 2rem 0; text-align: center;
+}
+.ad-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem; letter-spacing: 2px; color: var(--muted); text-transform: uppercase;
+}
+
+/* FOOTER */
+footer { background: var(--ink); color: var(--white); padding: 4rem 0 2rem; }
+.footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+.footer-brand .logo { font-size: 1.8rem; margin-bottom: 0.8rem; }
+.footer-about { font-size: 0.82rem; color: rgba(255,255,255,0.5); line-height: 1.7; margin-bottom: 1rem; }
+.footer-social { display: flex; gap: 0.6rem; }
+.social-btn {
+  width: 32px; height: 32px; border: 1px solid rgba(255,255,255,0.15);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--light);
+  cursor: pointer; transition: all 0.2s;
+}
+.social-btn:hover { border-color: var(--red); color: var(--red); }
+.footer-col h4 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--red); margin-bottom: 1rem;
+}
+.footer-col ul { list-style: none; }
+.footer-col ul li { margin-bottom: 0.6rem; }
+.footer-col ul li a {
+  font-size: 0.85rem; color: rgba(255,255,255,0.5);
+  text-decoration: none; transition: color 0.2s;
+}
+.footer-col ul li a:hover { color: var(--white); }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1.5rem;
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: gap;
+  gap: 1rem;
+}
+.footer-copy {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem; color: rgba(255,255,255,0.3); letter-spacing: 1px;
+}
+
+/* MOBILE MENU */
+.mobile-nav { display: none; background: var(--ink2); flex-direction: column; }
+.mobile-nav a {
+  display: block; padding: 0.9rem 1.5rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--light); text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.mobile-nav a:hover { color: var(--white); background: rgba(192,57,43,0.1); }
+.mobile-nav.open { display: flex; }
+
+/* SCROLL FADE */
+.reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.6s, transform 0.6s; }
+.reveal.visible { opacity: 1; transform: none; }
+
+/* RESPONSIVE */
+@media(max-width:1024px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-sidebar { border-left: none; border-top: 1px solid var(--border); padding: 1.5rem 0 0; flex-direction: row; flex-wrap: wrap; gap: 0; }
+  .sidebar-article { width: 50%; padding-right: 1rem; }
+  .two-col { grid-template-columns: 1fr; }
+  .side-col { border-left: none; border-top: 1px solid var(--border); padding-left: 0; padding-top: 2rem; }
+  .articles-grid { grid-template-columns: repeat(2, 1fr); }
+  .pubs-grid { grid-template-columns: repeat(3, 1fr); }
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
+}
+@media(max-width:768px) {
+  .masthead { flex-direction: column; gap: 1rem; padding: 1rem 1.5rem; text-align: center; }
+  .masthead-right { align-items: center; }
+  .nav-tabs, .nav-search { display: none; }
+  .hamburger-nav { display: flex; }
+  .hero-lead { padding: 1.5rem 0; }
+  .articles-grid { grid-template-columns: 1fr; }
+  .opinion-grid { grid-template-columns: 1fr; }
+  .pubs-grid { grid-template-columns: repeat(2, 1fr); }
+  .events-grid { grid-template-columns: 1fr; }
+  .footer-top { grid-template-columns: 1fr; }
+  .long-read { grid-template-columns: 1fr; }
+  .container { padding: 0 1rem; }
+  section.page-section { padding: 2rem 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- BREAKING TICKER -->
+<div class="ticker-bar">
+  <div class="ticker-label">⚡ BREAKING</div>
+  <div class="ticker-track">
+    <span>Pentagon approves $14.2B supplemental defense budget for FY2026 <span class="ticker-sep">◆</span></span>
+    <span>Army deploys next-gen autonomous logistics units to Europe <span class="ticker-sep">◆</span></span>
+    <span>Senate Armed Services Committee advances NDAA amendments <span class="ticker-sep">◆</span></span>
+    <span>Cyber Command expands civilian hiring initiative amid talent shortage <span class="ticker-sep">◆</span></span>
+    <span>New GovCloud contract awards: $2.1B in federal IT modernization <span class="ticker-sep">◆</span></span>
+    <span>Pentagon approves $14.2B supplemental defense budget for FY2026 <span class="ticker-sep">◆</span></span>
+    <span>Army deploys next-gen autonomous logistics units to Europe <span class="ticker-sep">◆</span></span>
+    <span>Senate Armed Services Committee advances NDAA amendments <span class="ticker-sep">◆</span></span>
+    <span>Cyber Command expands civilian hiring initiative amid talent shortage <span class="ticker-sep">◆</span></span>
+    <span>New GovCloud contract awards: $2.1B in federal IT modernization <span class="ticker-sep">◆</span></span>
+  </div>
+</div>
+
+<!-- MASTHEAD -->
+<div class="masthead">
+  <div class="masthead-left">
+    <div class="masthead-date" id="dateDisplay"></div>
+    <div class="logo">APEX<span>X</span> MEDIA</div>
+    <div class="logo-sub">Defense · Military · Federal Technology</div>
+  </div>
+  <div class="masthead-right">
+    <div class="masthead-actions">
+      <button class="btn-login">Sign In</button>
+      <button class="btn-sub">Subscribe</button>
+    </div>
+  </div>
+</div>
+
+<!-- PRIMARY NAV -->
+<nav class="primary">
+  <ul class="nav-tabs">
+    <li><a href="#" class="active">Home</a></li>
+    <li><a href="#defense">Defense News</a></li>
+    <li><a href="#military">Military Times</a></li>
+    <li><a href="#federal">Federal Tech</a></li>
+    <li><a href="#cyber">Cyber & C4ISR</a></li>
+    <li><a href="#analysis">Analysis</a></li>
+    <li><a href="#events-section">Events</a></li>
+  </ul>
+  <div class="nav-search">
+    <input class="search-input" type="text" placeholder="Search stories..."/>
+    <div class="hamburger-nav" id="hamburgerNav">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <a href="#">Home</a>
+  <a href="#defense">Defense News</a>
+  <a href="#military">Military Times</a>
+  <a href="#federal">Federal Tech</a>
+  <a href="#cyber">Cyber & C4ISR</a>
+  <a href="#analysis">Analysis</a>
+  <a href="#events-section">Events</a>
+</div>
+
+<!-- HERO -->
+<div class="container" style="padding-top:2rem;">
+  <div class="hero-grid">
+    <div class="hero-lead">
+      <div class="hero-label">Top Story · Defense</div>
+      <div class="hero-img-placeholder">
+        <div class="img-caption">
+          <span class="img-icon">🛡️</span>
+          PENTAGON — ARLINGTON, VIRGINIA
+        </div>
+      </div>
+      <h1 class="hero-headline">Pentagon's $890B Budget Faces New Congressional Scrutiny Over AI Weapons Systems</h1>
+      <p class="hero-deck">Senior defense officials appeared before the House Armed Services Committee Thursday to defend the administration's largest-ever investment in autonomous and AI-assisted weapons platforms, amid bipartisan concerns over accountability.</p>
+      <div class="hero-meta">
+        <span>By Marcus Chen, Defense Correspondent</span>
+        <span class="meta-dot">◆</span>
+        <span>April 25, 2026</span>
+        <span class="meta-dot">◆</span>
+        <span>8 min read</span>
+        <span class="meta-dot">◆</span>
+        <span>Defense News</span>
+      </div>
+    </div>
+    <div class="hero-sidebar">
+      <div class="sidebar-article">
+        <div class="sidebar-num">02</div>
+        <div class="sidebar-label">Military Times</div>
+        <div class="sidebar-title">Army Modernization Plan Accelerates Amid Pacific Readiness Concerns</div>
+        <div class="sidebar-meta">Sarah Okafor · 5 min</div>
+      </div>
+      <div class="sidebar-article">
+        <div class="sidebar-num">03</div>
+        <div class="sidebar-label">Federal Tech</div>
+        <div class="sidebar-title">OPM Launches Largest Federal Cybersecurity Workforce Initiative Since 2018</div>
+        <div class="sidebar-meta">James Whitfield · 6 min</div>
+      </div>
+      <div class="sidebar-article">
+        <div class="sidebar-num">04</div>
+        <div class="sidebar-label">C4ISRNET</div>
+        <div class="sidebar-title">Space Force Contracts New Satellite Mesh Network for Global ISR Coverage</div>
+        <div class="sidebar-meta">Priya Nair · 4 min</div>
+      </div>
+      <div class="sidebar-article">
+        <div class="sidebar-num">05</div>
+        <div class="sidebar-label">Analysis</div>
+        <div class="sidebar-title">The Drone Proliferation Dilemma: How Allies Are Diverging on Standards</div>
+        <div class="sidebar-meta">Lt. Gen. (Ret.) R. Holt · 9 min</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PUBLICATIONS STRIP -->
+<div class="pubs-section">
+  <div class="container">
+    <div class="pubs-label">Our Publications</div>
+    <div class="pubs-grid">
+      <div class="pub-card">
+        <div class="pub-icon">⚔️</div>
+        <div class="pub-name">Defense News</div>
+        <div class="pub-desc">Global Defense Coverage</div>
+      </div>
+      <div class="pub-card">
+        <div class="pub-icon">🎖️</div>
+        <div class="pub-name">Force Times</div>
+        <div class="pub-desc">Military Personnel & Policy</div>
+      </div>
+      <div class="pub-card">
+        <div class="pub-icon">🏛️</div>
+        <div class="pub-name">Federal Wire</div>
+        <div class="pub-desc">Public Sector Management</div>
+      </div>
+      <div class="pub-card">
+        <div class="pub-icon">📡</div>
+        <div class="pub-name">C4 Network</div>
+        <div class="pub-desc">Command · Control · Cyber</div>
+      </div>
+      <div class="pub-card">
+        <div class="pub-icon">🌐</div>
+        <div class="pub-name">GovTech Review</div>
+        <div class="pub-desc">Federal IT & Innovation</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DEFENSE NEWS SECTION -->
+<section class="page-section" id="defense">
+  <div class="container">
+    <div class="two-col">
+      <div class="main-col">
+        <div class="section-header">
+          <span class="section-title-label">Defense News</span>
+          <span class="section-title-sub">Global Coverage</span>
+          <a class="section-link" href="#">All Stories →</a>
+        </div>
+
+        <!-- Long Read Feature -->
+        <div class="long-read reveal">
+          <div>
+            <div class="long-read-label">⬡ Long Read · Exclusive</div>
+            <div class="long-read-title">Inside the Pentagon's Classified AI War Room</div>
+            <div class="long-read-excerpt">A rare look inside the Defense Advanced Research Projects Agency's newest division, where machine learning models are being trained on classified battlefield data — and where the rules of engagement are still being written.</div>
+            <span class="long-read-cta">Read Full Investigation →</span>
+          </div>
+          <div class="long-read-visual">
+            <div class="visual-text">AI</div>
+          </div>
+        </div>
+
+        <div class="articles-grid reveal">
+          <div class="article-card">
+            <div class="article-img"><span class="article-img-icon">🚀</span></div>
+            <div class="article-category">Weapons Systems</div>
+            <div class="article-title">Hypersonic Missile Program Hits Key Milestone After 3 Years of Testing</div>
+            <div class="article-excerpt">The program recorded its first successful intercontinental flight test at Mach 8 over the Pacific proving range.</div>
+            <div class="article-meta">D. Forsythe · Apr 24 · 5 min</div>
+          </div>
+          <div class="article-card">
+            <div class="article-img"><span class="article-img-icon">🌏</span></div>
+            <div class="article-category">Global Affairs</div>
+            <div class="article-title">NATO Allies Pledge Additional Forces to Eastern Flank as Tensions Rise</div>
+            <div class="article-excerpt">Six member nations announced rotational deployment agreements at an emergency session in Brussels Wednesday.</div>
+            <div class="article-meta">R. Johansson · Apr 24 · 4 min</div>
+          </div>
+          <div class="article-card">
+            <div class="article-img"><span class="article-img-icon">⚓</span></div>
+            <div class="article-category">Naval Operations</div>
+            <div class="article-title">Navy's New Destroyer Class Completes Accelerated Sea Trials</div>
+            <div class="article-excerpt">The USS Resolute passed all combat systems evaluations two months ahead of schedule, the Navy confirmed.</div>
+            <div class="article-meta">C. Nakamura · Apr 23 · 3 min</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="side-col reveal">
+        <div class="widget">
+          <div class="widget-title">Trending Now</div>
+          <div class="trending-item">
+            <div class="trending-num">1</div>
+            <div class="trending-title">Special Operations Command Restructures for Gray Zone Conflicts</div>
+          </div>
+          <div class="trending-item">
+            <div class="trending-num">2</div>
+            <div class="trending-title">Air Force Grounds F-35 Fleet Pending Safety Review</div>
+          </div>
+          <div class="trending-item">
+            <div class="trending-num">3</div>
+            <div class="trending-title">DARPA Awards $340M Contract for Next-Gen Body Armor</div>
+          </div>
+          <div class="trending-item">
+            <div class="trending-num">4</div>
+            <div class="trending-title">Marine Corps Tests Autonomous Amphibious Assault Vehicles</div>
+          </div>
+          <div class="trending-item">
+            <div class="trending-num">5</div>
+            <div class="trending-title">Congress Debates Military Pay Raise Amid Inflation Concerns</div>
+          </div>
+        </div>
+
+        <div class="widget newsletter-widget">
+          <div class="widget-title">Defense Briefing</div>
+          <div class="newsletter-desc">The most important defense and military news, delivered to your inbox every morning at 0600.</div>
+          <input class="newsletter-input" type="email" placeholder="your@email.com"/>
+          <button class="newsletter-btn">Subscribe — It's Free</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MILITARY / CYBER SECTION -->
+<section class="page-section" id="military">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-title-label">Force Times</span>
+      <span class="section-title-sub">Military Personnel & Policy</span>
+      <a class="section-link" href="#">All Stories →</a>
+    </div>
+    <div class="articles-grid reveal">
+      <div class="article-card">
+        <div class="article-img"><span class="article-img-icon">🎖️</span></div>
+        <div class="article-category">Personnel</div>
+        <div class="article-title">New Mental Health Initiative Rolls Out Across All Service Branches</div>
+        <div class="article-excerpt">The DoD's most comprehensive behavioral health program to date includes embedded providers and 24/7 crisis support.</div>
+        <div class="article-meta">A. Johnson · Apr 25 · 6 min</div>
+      </div>
+      <div class="article-card">
+        <div class="article-img"><span class="article-img-icon">🏠</span></div>
+        <div class="article-category">Benefits</div>
+        <div class="article-title">VA Housing Program Expansion Could Help 40,000 Veterans This Year</div>
+        <div class="article-excerpt">Bipartisan legislation would increase HUD-VASH vouchers and streamline eligibility requirements for homeless veterans.</div>
+        <div class="article-meta">T. Williams · Apr 24 · 4 min</div>
+      </div>
+      <div class="article-card">
+        <div class="article-img"><span class="article-img-icon">🎓</span></div>
+        <div class="article-category">Education</div>
+        <div class="article-title">GI Bill Modernization Act Would Expand Benefits to National Guard</div>
+        <div class="article-excerpt">The proposal has cleared committee and is headed to a full Senate vote next week with strong bipartisan support.</div>
+        <div class="article-meta">M. Torres · Apr 23 · 5 min</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ANALYSIS & OPINION -->
+<section class="page-section" id="analysis" style="background:var(--paper2);">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-title-label">Analysis & Opinion</span>
+      <span class="section-title-sub">Expert Perspectives</span>
+      <a class="section-link" href="#">All Analysis →</a>
+    </div>
+    <div class="opinion-grid reveal">
+      <div class="opinion-card">
+        <div class="opinion-label">Analysis</div>
+        <div class="opinion-title">Why the U.S. Is Losing the Autonomous Systems Race — And How to Win It Back</div>
+        <div class="opinion-author">Adm. (Ret.) Patricia Walsh · Former CNO</div>
+      </div>
+      <div class="opinion-card">
+        <div class="opinion-label">Opinion</div>
+        <div class="opinion-title">The False Promise of "AI-Safe" Nuclear Command and Control</div>
+        <div class="opinion-author">Dr. Elliot Marsh · Brookings Institution</div>
+      </div>
+      <div class="opinion-card">
+        <div class="opinion-label">Deep Dive</div>
+        <div class="opinion-title">Federal IT Modernization: Ten Years of FITARA and What It Actually Achieved</div>
+        <div class="opinion-author">Sandra Osei · GovTech Policy Fellow</div>
+      </div>
+      <div class="opinion-card">
+        <div class="opinion-label">Commentary</div>
+        <div class="opinion-title">Recruiting Crisis in Uniform: Why the Military Must Compete With Silicon Valley</div>
+        <div class="opinion-author">Sgt. Maj. (Ret.) J. Diaz · RAND Corporation</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI ASSISTANT -->
+<div class="ai-section" id="ai">
+  <div class="container">
+    <div class="ai-header">
+      <div class="ai-header-label">⬡ Powered by AI</div>
+      <h2>ApexX Intelligence Assistant</h2>
+      <p>Ask our AI about defense policy, military news, federal technology, or any story on our platform.</p>
+    </div>
+    <div class="ai-chat-box">
+      <div class="ai-chat-header">
+        <div class="ai-dot red"></div>
+        <div class="ai-dot yellow"></div>
+        <div class="ai-dot green"></div>
+        <span class="ai-title">apexx-intelligence · defense & federal news assistant</span>
+        <div class="ai-live"><div class="ai-live-dot"></div>Live</div>
+      </div>
+      <div id="ai-messages">
+        <div class="ai-msg bot">
+          <div class="ai-avatar">AX</div>
+          <div class="ai-bubble">Welcome to ApexX Intelligence. I can answer questions about defense policy, military affairs, federal technology, cybersecurity, and government contracting. What would you like to know?</div>
+        </div>
+      </div>
+      <div class="ai-quickbtns">
+        <button class="ai-quick" onclick="sendQuick('What is the current U.S. defense budget?')">Defense budget</button>
+        <button class="ai-quick" onclick="sendQuick('Explain what C4ISR means')">What is C4ISR?</button>
+        <button class="ai-quick" onclick="sendQuick('What are the latest military AI developments?')">Military AI</button>
+        <button class="ai-quick" onclick="sendQuick('What is the NDAA?')">About NDAA</button>
+        <button class="ai-quick" onclick="sendQuick('What federal cybersecurity frameworks exist?')">Cyber frameworks</button>
+      </div>
+      <div class="ai-input-row">
+        <input id="ai-input" type="text" placeholder="Ask about defense, military, federal technology..." onkeydown="if(event.key==='Enter')sendAI()"/>
+        <button id="ai-send" onclick="sendAI()">Ask →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ADVERTISER STRIP -->
+<div class="container">
+  <div class="advertise-strip">
+    <div class="ad-text">Advertisement</div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--muted);">Reach 2M+ defense, military, and federal decision-makers —</div>
+    <button class="btn-sub" style="font-size:0.6rem;">Advertise With Us</button>
+  </div>
+</div>
+
+<!-- EVENTS -->
+<div class="events-strip" id="events-section">
+  <div class="container">
+    <div class="events-header">
+      <div class="events-title">Upcoming Events</div>
+      <a class="section-link" href="#" style="color:var(--muted);border-color:var(--muted);margin-left:auto;">All Events →</a>
+    </div>
+    <div class="events-grid">
+      <div class="event-card">
+        <div class="event-date">12</div>
+        <div class="event-month">May 2026</div>
+        <div class="event-name">ApexX Defense Summit</div>
+        <div class="event-loc">📍 Washington, D.C. · Reagan Center</div>
+      </div>
+      <div class="event-card">
+        <div class="event-date">19</div>
+        <div class="event-month">Jun 2026</div>
+        <div class="event-name">Federal IT Modernization Forum</div>
+        <div class="event-loc">📍 Arlington, VA · Crystal City</div>
+      </div>
+      <div class="event-card">
+        <div class="event-date">08</div>
+        <div class="event-month">Sep 2026</div>
+        <div class="event-name">Cyber Command Leadership Symposium</div>
+        <div class="event-loc">📍 Fort Meade, MD · NSA Campus</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo">APEX<span>X</span> MEDIA</div>
+        <div class="logo-sub" style="margin-bottom:1rem;">Defense · Military · Federal Technology</div>
+        <p class="footer-about">ApexX Media Group is the leading independent news organization covering military affairs, defense programs, and federal technology. Headquartered in Arlington, Virginia, with correspondents worldwide.</p>
+        <div class="footer-social">
+          <div class="social-btn">X</div>
+          <div class="social-btn">in</div>
+          <div class="social-btn">f</div>
+          <div class="social-btn">▶</div>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Publications</h4>
+        <ul>
+          <li><a href="#">Defense News</a></li>
+          <li><a href="#">Force Times</a></li>
+          <li><a href="#">Federal Wire</a></li>
+          <li><a href="#">C4 Network</a></li>
+          <li><a href="#">GovTech Review</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Advertise</a></li>
+          <li><a href="#">Events</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press Room</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support Veterans</h4>
+        <ul>
+          <li><a href="#">Military Foundation</a></li>
+          <li><a href="#">VSO Partners</a></li>
+          <li><a href="#">Donate</a></li>
+          <li><a href="#">Careers for Vets</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 ApexX Media Group · All Rights Reserved · Arlington, Virginia</div>
+      <div class="footer-copy">Independent Journalism · Trusted by Those Who Serve</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// DATE
+const d = new Date();
+document.getElementById('dateDisplay').textContent = d.toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'}).toUpperCase();
+
+// HAMBURGER
+document.getElementById('hamburgerNav').addEventListener('click', () => {
+  document.getElementById('mobileNav').classList.toggle('open');
+});
+
+// SCROLL REVEAL
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// AI CHATBOT
+const SYSTEM = `You are the ApexX Intelligence Assistant — an AI for ApexX Media Group, a leading defense and military news organization (inspired by publications like Defense News, Military Times, and C4ISRNET). 
+
+You are knowledgeable about:
+- U.S. and global defense policy, budgets, programs, and procurement
+- Military affairs: Army, Navy, Air Force, Marine Corps, Space Force, Coast Guard
+- Federal technology: IT modernization, cloud, cybersecurity, FedRAMP, FITARA
+- Cyber warfare, C4ISR (Command, Control, Communications, Computers, Intelligence, Surveillance, and Reconnaissance)
+- Government contracting, NDAA, DoD policy
+- Veterans affairs and military benefits
+
+Keep answers clear, authoritative, and concise (3-5 sentences). Use a journalistic, professional tone. For current events past your knowledge cutoff, note that the user should check the latest stories on the platform.`;
+
+async function sendAI() {
+  const input = document.getElementById('ai-input');
+  const text = input.value.trim();
+  if (!text) return;
+  input.value = '';
+  addMsg(text, 'user');
+  const tid = addTyping();
+  document.getElementById('ai-send').disabled = true;
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        system: SYSTEM,
+        messages: [{ role: 'user', content: text }]
+      })
+    });
+    const data = await res.json();
+    removeTyping(tid);
+    addMsg(data.content?.[0]?.text || 'Unable to retrieve response. Please try again.', 'bot');
+  } catch {
+    removeTyping(tid);
+    addMsg('Connection error. Please try again.', 'bot');
+  }
+  document.getElementById('ai-send').disabled = false;
+}
+
+function sendQuick(t) { document.getElementById('ai-input').value = t; sendAI(); }
+
+function addMsg(text, role) {
+  const box = document.getElementById('ai-messages');
+  const d = document.createElement('div');
+  d.className = 'ai-msg ' + role;
+  d.innerHTML = `<div class="ai-avatar">${role==='bot'?'AX':'You'}</div><div class="ai-bubble">${text}</div>`;
+  box.appendChild(d); box.scrollTop = box.scrollHeight;
+}
+let tc = 0;
+function addTyping() {
+  const id = 'typ-'+(++tc);
+  const box = document.getElementById('ai-messages');
+  const d = document.createElement('div');
+  d.className = 'ai-msg bot'; d.id = id;
+  d.innerHTML = `<div class="ai-avatar">AX</div><div class="ai-bubble"><div class="ai-typing"><span></span><span></span><span></span></div></div>`;
+  box.appendChild(d); box.scrollTop = box.scrollHeight; return id;
+}
+function removeTyping(id) { const el = document.getElementById(id); if(el) el.remove(); }
+</script>
+</body>
+</html>
